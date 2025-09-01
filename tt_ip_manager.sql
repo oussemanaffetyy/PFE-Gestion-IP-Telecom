@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 01, 2025 at 12:27 PM
+-- Generation Time: Sep 01, 2025 at 01:52 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.14
 
@@ -44,8 +44,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `login`, `password`, `prenom`, `nom`, `email`, `avatar_url`, `reset_token`, `reset_token_expires`) VALUES
-(3, 'oussema', '$2b$10$YyB/HsMyOCz8gZZZ3ePuYOxv7wBfT5fcaZH.1/bf94ZCH/pL69.BO', 'Oussema', 'Naffetii', 'oussemanaffetyy@gmail.com', '/uploads/avatar-1756726466746.png', 'ff3b0957f6a024a673276a6673b7f809d55bb410', '2025-09-01 01:46:42'),
-(10, 'test123', '$2b$10$5fzAreIpY48nxuo30oTigOjwfkeU5k2hXmtwDdk3w12Lfr9JcartK', 'Adriana', 'Pollich', 'a37135920@gmail.com', '/uploads/avatar-1756722293942.png', NULL, NULL);
+(3, 'admin', '$2b$10$YyB/HsMyOCz8gZZZ3ePuYOxv7wBfT5fcaZH.1/bf94ZCH/pL69.BO', 'Admin', 'Test', 'a37135920@gmail.com', '/uploads/avatar-1756734292781.png', 'ff3b0957f6a024a673276a6673b7f809d55bb410', '2025-09-01 01:46:42'),
+(11, 'amel', '$2b$10$pPuYumAqg.fE0kv4rGo1AeanclmILIrIfYLl4MdZ/ZZKn8EOi8MOi', 'Amel', 'Ben', 'amelbenm2025@gmail.com', '/uploads/avatar-1756734561750.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -60,18 +60,6 @@ CREATE TABLE `anomalies` (
   `status` enum('NEW','ACKNOWLEDGED') NOT NULL DEFAULT 'NEW',
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `anomalies`
---
-
-INSERT INTO `anomalies` (`id`, `anomaly_type`, `details`, `status`, `timestamp`) VALUES
-(19, 'BRUTE_FORCE', '{\"ip_address\": \"10.10.10.10\", \"country_name\": \"Unknown\", \"last_attempt\": \"2025-08-31T23:13:56.000Z\", \"failed_attempts\": 32}', 'ACKNOWLEDGED', '2025-08-31 23:14:00'),
-(20, 'BRUTE_FORCE', '{\"ip_address\": \"12.12.12.12\", \"country_name\": \"US\", \"last_attempt\": \"2025-08-31T23:15:39.000Z\", \"failed_attempts\": 21}', 'ACKNOWLEDGED', '2025-08-31 23:15:40'),
-(21, 'BRUTE_FORCE', '{\"ip_address\": \"10.10.10.10\", \"country_name\": \"Unknown\", \"last_attempt\": \"2025-08-31T23:13:56.000Z\", \"failed_attempts\": 32}', 'ACKNOWLEDGED', '2025-09-01 01:39:50'),
-(22, 'BRUTE_FORCE', '{\"ip_address\": \"12.12.12.12\", \"country_name\": \"US\", \"last_attempt\": \"2025-08-31T23:15:39.000Z\", \"failed_attempts\": 21}', 'ACKNOWLEDGED', '2025-09-01 01:39:50'),
-(23, 'BRUTE_FORCE', '{\"ip_address\": \"40.40.40.40\", \"country_name\": \"US\", \"last_attempt\": \"2025-09-01T09:40:17.000Z\", \"failed_attempts\": 30}', 'ACKNOWLEDGED', '2025-09-01 09:40:20'),
-(24, 'BRUTE_FORCE', '{\"ip_address\": \"9.9.9.9\", \"country_name\": \"US\", \"last_attempt\": \"2025-09-01T10:26:06.000Z\", \"failed_attempts\": 29}', 'ACKNOWLEDGED', '2025-09-01 10:26:10');
 
 -- --------------------------------------------------------
 
@@ -1118,124 +1106,6 @@ CREATE TABLE `ip_check_logs` (
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `ip_check_logs`
---
-
-INSERT INTO `ip_check_logs` (`id`, `ip_address`, `status`, `site_id`, `country_name`, `user_agent`, `timestamp`) VALUES
-(200, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:39'),
-(201, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:41'),
-(202, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:42'),
-(203, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:42'),
-(204, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:43'),
-(205, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:43'),
-(206, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:44'),
-(207, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:12:44'),
-(208, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:52'),
-(209, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:52'),
-(210, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(211, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(212, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(213, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(214, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(215, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(216, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:53'),
-(217, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(218, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(219, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(220, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(221, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(222, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:54'),
-(223, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:55'),
-(224, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:55'),
-(225, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:55'),
-(226, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:55'),
-(227, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:55'),
-(228, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:56'),
-(229, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:56'),
-(230, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:56'),
-(231, '10.10.10.10', 'Rejeté', NULL, 'Unknown', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:13:56'),
-(232, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:33'),
-(233, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:34'),
-(234, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:34'),
-(235, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:35'),
-(236, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:35'),
-(237, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:35'),
-(238, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:36'),
-(239, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:36'),
-(240, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:36'),
-(241, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:37'),
-(242, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:37'),
-(243, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:37'),
-(244, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:38'),
-(245, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:38'),
-(246, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:38'),
-(247, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(248, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(249, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(250, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(251, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(252, '12.12.12.12', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-08-31 23:15:39'),
-(253, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:11'),
-(254, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:12'),
-(255, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:12'),
-(256, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:12'),
-(257, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:12'),
-(258, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:12'),
-(259, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(260, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(261, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(262, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(263, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(264, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:13'),
-(265, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(266, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(267, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(268, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(269, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(270, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:14'),
-(271, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:15'),
-(272, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:15'),
-(273, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:15'),
-(274, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:15'),
-(275, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:15'),
-(276, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(277, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(278, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(279, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(280, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(281, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:16'),
-(282, '40.40.40.40', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 09:40:17'),
-(283, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:00'),
-(284, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:01'),
-(285, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:02'),
-(286, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:02'),
-(287, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:02'),
-(288, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:02'),
-(289, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:02'),
-(290, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(291, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(292, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(293, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(294, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(295, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:03'),
-(296, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(297, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(298, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(299, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(300, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(301, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:04'),
-(302, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(303, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(304, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(305, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(306, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(307, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:05'),
-(308, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:06'),
-(309, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:06'),
-(310, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:06'),
-(311, '9.9.9.9', 'Rejeté', NULL, 'US', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', '2025-09-01 10:26:06');
-
 -- --------------------------------------------------------
 
 --
@@ -1993,7 +1863,7 @@ ALTER TABLE `vlans`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `anomalies`

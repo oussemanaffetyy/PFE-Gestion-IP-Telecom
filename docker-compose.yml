@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Service Backend (API)
+  backend:
+    build: ./BackEnd
+    container_name: telecom_backend
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./BackEnd:/app
+      - /app/node_modules
+    env_file:
+      - ./BackEnd/.env.prod
+    environment:
+      - DB_HOST=mysql_db # Important: Le backend se connecte à la DB via son nom de service
+    depends_on:
+      - mysql_db
+
+  # Service Frontend (React)
+  frontend:
+    build: ./FrontEnd
+    container_name: telecom_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./FrontEnd:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+  # Service Base de Données (MySQL)
+  mysql_db:
+    image: mysql:8.0
+    container_name: telecom_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root # Doit correspondre à votre DB_PASSWORD
+      MYSQL_DATABASE: tt_ip_manager # Doit correspondre à votre DB_NAME
+    ports:
+      # Vous pouvez accéder à la base de données depuis votre machine sur le port 3307
+      - "3307:3306"
+    volumes:
+      # Ce volume sauvegarde vos données MySQL
+      - db_data:/var/lib/mysql
+      # Cette ligne magique charge votre fichier .sql au premier démarrage !
+      - ./tt_ip_manager.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Définition du volume pour la persistance des données
+volumes:
+  db_data:
