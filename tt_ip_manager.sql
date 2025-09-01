@@ -37,7 +37,7 @@ CREATE TABLE `admins` (
   `avatar_url` varchar(255) DEFAULT NULL,
   `reset_token` varchar(255) DEFAULT NULL,
   `reset_token_expires` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admins`
@@ -59,7 +59,7 @@ CREATE TABLE `anomalies` (
   `details` json NOT NULL,
   `status` enum('NEW','ACKNOWLEDGED') NOT NULL DEFAULT 'NEW',
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE `ip_addresses` (
   `site_id` int NOT NULL,
   `ip_address` varchar(50) NOT NULL,
   `ip_category` varchar(50) NOT NULL COMMENT 'Ex: SUBNET_3G_OSS'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ip_addresses`
@@ -1104,7 +1104,7 @@ CREATE TABLE `ip_check_logs` (
   `country_name` varchar(100) DEFAULT NULL,
   `user_agent` text,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1115,7 +1115,7 @@ CREATE TABLE `ip_check_logs` (
 CREATE TABLE `regions` (
   `id` int NOT NULL,
   `nom_region` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `regions`
@@ -1141,7 +1141,7 @@ CREATE TABLE `sites` (
   `site_type_id` int NOT NULL,
   `Site_Name` varchar(100) DEFAULT NULL,
   `Site_Code` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sites`
@@ -1361,7 +1361,7 @@ INSERT INTO `sites` (`id`, `region_id`, `site_type_id`, `Site_Name`, `Site_Code`
 CREATE TABLE `site_types` (
   `id` int NOT NULL,
   `type_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `site_types`
@@ -1382,7 +1382,7 @@ CREATE TABLE `vlans` (
   `site_id` int NOT NULL,
   `vlan_value` varchar(50) NOT NULL,
   `vlan_category` varchar(50) NOT NULL COMMENT 'Ex: VLAN_3G'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vlans`
