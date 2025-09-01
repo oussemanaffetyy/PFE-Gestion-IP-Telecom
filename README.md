@@ -1,3 +1,4 @@
+
 # Application de Gestion et Sécurisation d'un Réseau Telecom
 
 Ce projet, réalisé dans le cadre d'un Projet de Fin d'Études (PFE), est une application web complète permettant la gestion et la surveillance d'un parc de sites et d'adresses IP d'un réseau de télécommunication. Il inclut un panel d'administration sécurisé et un système de détection d'anomalies.
@@ -35,6 +36,7 @@ Ce projet, réalisé dans le cadre d'un Projet de Fin d'Études (PFE), est une a
 - **Frontend**: React.js, React Router, Axios, Bootstrap, `date-fns`
 - **Backend**: Node.js, Express.js
 - **Base de Données**: MySQL
+- **Conteneurisation**: Docker, Docker Compose
 - **Authentification**: JWT (jsonwebtoken), bcryptjs
 - **Gestion des Fichiers**: Multer
 - **Envoi d'E-mails**: Nodemailer
@@ -50,15 +52,14 @@ Le projet est organisé en un monorepo avec deux dossiers principaux :
 
 ## ⚙️ Installation et Lancement
 
-**Prérequis :** Node.js et une base de données MySQL.
+**Prérequis :** Node.js et une base de données MySQL pour la méthode manuelle.
 
 ### Backend
 
 1. Naviguez vers le dossier du backend : `cd BackEnd`
 2. Installez les dépendances : `npm install`
-3. Créez un fichier `.env` à la racine de `BackEnd` en vous basant sur votre configuration (DB_HOST, DB_USER, etc.).
-4. Démarrez le serveur : `npm start`
-   Le serveur sera lancé sur `http://localhost:3001`.
+3. Démarrez le serveur : `npm start`
+4. Le serveur sera lancé sur `http://localhost:3001`.
 
 ### Frontend
 
@@ -68,4 +69,16 @@ Le projet est organisé en un monorepo avec deux dossiers principaux :
 4. Démarrez l'application React : `npm start`
    L'application sera accessible sur `http://localhost:3000`.
 
----
+### Lancement avec Docker Compose (Méthode Recommandée)
+
+Cette méthode est la plus simple pour lancer l'intégralité du projet. Elle configure et remplit automatiquement la base de données.
+
+1. **Prérequis** : Avoir [Docker Desktop](https://www.docker.com/products/docker-desktop/) installé.
+2. **Lancement** : À la racine du projet (`Telecom`), exécutez : `docker compose up --build`
+
+### ✨ Identifiants par Défaut
+
+Un compte administrateur est créé automatiquement lorsque vous initialisez la base de données avec le fichier `.sql`. Utilisez ces identifiants pour votre première connexion :
+
+- **Login :** `amel`
+- **Mot de passe :** `amel1234`
