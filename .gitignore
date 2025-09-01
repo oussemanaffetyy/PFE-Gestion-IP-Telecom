@@ -4,8 +4,7 @@
 /BackEnd/node_modules
 /FrontEnd/node_modules
 
-# Fichiers de configuration sensibles
-/BackEnd/.env
+
 
 # Fichiers de build du frontend
 /FrontEnd/build
