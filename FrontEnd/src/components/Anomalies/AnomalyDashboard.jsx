@@ -71,9 +71,15 @@ const AnomalyDashboard = () => {
                                     <td>{safeFormatDate(anomaly.timestamp)}</td>
                                     <td>{anomaly.anomaly_type.replace(/_/g, " ")}</td>
                                     <td>
-                                        {anomaly.anomaly_type === 'BRUTE_FORCE' && 
-                                            `IP: ${anomaly.details.ip_address} (${anomaly.details.country_name || 'Inconnu'}) - ${anomaly.details.failed_attempts} tentatives.`
-                                        }
+                                        {anomaly.anomaly_type === 'BRUTE_FORCE' && (() => {
+                                                        let details = {};
+                                                        try {
+                                                            details = typeof anomaly.details === 'string' ? JSON.parse(anomaly.details) : anomaly.details;
+                                                        } catch (e) {
+                                                            return "Détails invalides.";
+                                                        }
+                                                        return `IP: ${details.ip_address} (${details.country_name || 'Inconnu'}) - ${details.failed_attempts} tentatives.`;
+                                                    })()}
                                     </td>
                                     <td>
                                         <span className={`badge ${anomaly.status === 'NEW' ? 'bg-danger-light text-danger' : 'bg-success-light text-success'}`}>
